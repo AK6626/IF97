@@ -772,7 +772,7 @@ static double lambthcon(double P, double T, double tau, double delta)
 	lamb1 = exp(delta * lamb1);
 	switch (Region_PT(P, T))
 	{
-		case 1:
+	case 1:
             taus = 1386 / T;
             pis = P / 16.53;
             dpidtau = (647.226 * 165.3 * (gammapitaureg1(taus, pis) * 1386 - gammapireg1(taus, pis) * T)) / (221.15 * T * T * gammapipireg1(taus, pis));
@@ -793,6 +793,7 @@ static double lambthcon(double P, double T, double tau, double delta)
         default:
             dpidtau = 0;
             ddeltadpi = 0;
+	    break;
 	}
     lamb2 = 0.0013848 / psivisc(tau, delta) * pow((tau * delta), (-2)) * dpidtau * dpidtau * pow((delta * ddeltadpi), 0.4678) * pow(delta, 0.5) * exp(-18.66 * pow((1 / tau - 1), 2) - pow((delta - 1), 4));
     return lamb0 * lamb1 + lamb2;
@@ -1195,10 +1196,10 @@ static int Region_PH(double P, double H)
 	if (P < Pmin || P > Pmax) return -1;
 	else if (H > PT2H(P, Tmax) || H < PT2H(P, Tmin)) return -1;
 	double Hliq, Hvap;
+	Hliq = P2H_liq(P);
+	Hvap = P2H_vap(P);
 	if (P <= Pcrit)
 	{
-		Hliq = P2H_liq(P);
-		Hvap = P2H_vap(P);
 		if (H >= Hliq && H <= Hvap) return 4;
 	}
 	if (P <= P23min)
@@ -1270,10 +1271,10 @@ static int Region_PS(double P, double S)
 	if (P < Pmin || P > Pmax) return -1;
 	else if (S > PT2S(P, Tmax) || S < PT2S(P, Tmin)) return -1;
 	double Sliq, Svap;
+	Sliq = P2S_liq(P);
+	Svap = P2S_vap(P);
 	if (P <= Pcrit)
 	{
-		Sliq = P2S_liq(P);
-		Svap = P2S_vap(P);
 		if (S >= Sliq && S <= Svap) return 4;
 	}
 	if (P <= P23min)

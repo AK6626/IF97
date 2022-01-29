@@ -2927,9 +2927,9 @@ Private Function Region_PH(P As Double, H As Double) As Integer
     End If
     
     Dim Hliq, Hvap As Double
+    Hliq = P2H_liq(P)
+    Hvap = P2H_vap(P)
     If P <= Pcrit Then
-        Hliq = P2H_liq(P)
-        Hvap = P2H_vap(P)
         If H >= Hliq And H <= Hvap Then
             Region_PH = 4
             Exit Function
@@ -3032,9 +3032,9 @@ Private Function Region_PS(P As Double, S As Double) As Integer
     End If
     
     Dim Sliq, Svap As Double
+    Sliq = P2S_liq(P)
+    Svap = P2S_vap(P)
     If P <= Pcrit Then
-        Sliq = P2S_liq(P)
-        Svap = P2S_vap(P)
         If S >= Sliq And S <= Svap Then
             Region_PS = 4
             Exit Function

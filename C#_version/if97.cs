@@ -1241,6 +1241,12 @@ class program
 					for (i = 0; i <= 33; i++) PH2T = PH2T + nreg2aH[i] * Math.Pow(P, ireg2aH[i]) * Math.Pow((eta - 2.1), jreg2aH[i]);
 					return PH2T;
 				}
+				else if (P <= 6.5467)
+				{
+					eta = H / 2000;
+					for (i = 0; i <= 37; i++) PH2T = PH2T + nreg2bH[i] * Math.Pow((P - 2), ireg2bH[i]) * Math.Pow((eta - 2.6), jreg2bH[i]);
+					return PH2T;
+				}
 				else if (H >= reg2b2c[3] + Math.Pow(((P - reg2b2c[4]) / reg2b2c[2]), 0.5))
 				{
 					eta = H / 2000;

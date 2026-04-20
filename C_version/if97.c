@@ -1,5 +1,5 @@
 #include <math.h>
-#include "if97.h"
+#include "IF97.h"
 
 //区域3饱和参数与WASPCN计算结果有出入，误差不大
 static const double Tcrit = 647.096;				// K
@@ -465,8 +465,8 @@ static double psivisc(double tau, double delta)
 
 static double T2P(double T)
 {
-	if (T < Tmin || T > Tcrit) return -1;
 	double theta, A, B, C;
+	if (T < Tmin || T > Tcrit) return -1;
 	theta = T + nreg4[8] / (T - nreg4[9]);
 	A = theta * theta + nreg4[0] * theta + nreg4[1];
 	B = nreg4[2] * theta * theta + nreg4[3] * theta + nreg4[4];
@@ -476,14 +476,14 @@ static double T2P(double T)
 
 static double P2T(double P)
 {
-	if (P < Pmin || P > Pcrit) return -1;
 	double beta, D, E, F, G;
-    beta = pow(P, 0.25);
-    E = beta * beta + nreg4[2] * beta + nreg4[5];
-    F = nreg4[0] * beta * beta + nreg4[3] * beta + nreg4[6];
-    G = nreg4[1] * beta * beta + nreg4[4] * beta + nreg4[7];
-    D = 2 * G / (-F - pow((F * F - 4 * E * G), 0.5));
-    return 0.5 * (nreg4[9] + D - pow((pow((nreg4[9] + D), 2) - 4 * (nreg4[8] + nreg4[9] * D)), 0.5));
+	if (P < Pmin || P > Pcrit) return -1;
+  beta = pow(P, 0.25);
+  E = beta * beta + nreg4[2] * beta + nreg4[5];
+  F = nreg4[0] * beta * beta + nreg4[3] * beta + nreg4[6];
+  G = nreg4[1] * beta * beta + nreg4[4] * beta + nreg4[7];
+  D = 2 * G / (-F - pow((F * F - 4 * E * G), 0.5));
+  return 0.5 * (nreg4[9] + D - pow((pow((nreg4[9] + D), 2) - 4 * (nreg4[8] + nreg4[9] * D)), 0.5));
 }
 
 static double Region23_T(double T)
@@ -837,20 +837,20 @@ static double P2D_vap(double P)
 
 static double TX2V(double T, double X)
 {
-	if (X < 0 || X > 1) return -1;
 	double R1, R2;
-    R1 = 1 / T2D_liq(T);
-    R2 = 1 / T2D_vap(T);
-    return R1 + (R2 - R1) * X;
+	if (X < 0 || X > 1) return -1;
+  R1 = 1 / T2D_liq(T);
+  R2 = 1 / T2D_vap(T);
+  return R1 + (R2 - R1) * X;
 }
 
 static double PX2V(double P, double X)
 {
-	if (X < 0 || X > 1) return -1;
 	double R1, R2;
-    R1 = 1 / P2D_liq(P);
-    R2 = 1 / P2D_vap(P);
-    return R1 + (R2 - R1) * X;
+	if (X < 0 || X > 1) return -1;
+  R1 = 1 / P2D_liq(P);
+  R2 = 1 / P2D_vap(P);
+  return R1 + (R2 - R1) * X;
 }
 
 static double T2E_liq(double T)
@@ -885,20 +885,20 @@ static double P2E_vap(double P)
 
 static double TX2E(double T, double X)
 {
-	if (X < 0 || X > 1) return -1;
 	double R1, R2;
-    R1 = T2E_liq(T);
-    R2 = T2E_vap(T);
-    return R1 + (R2 - R1) * X;
+	if (X < 0 || X > 1) return -1;
+  R1 = T2E_liq(T);
+  R2 = T2E_vap(T);
+  return R1 + (R2 - R1) * X;
 }
 
 static double PX2E(double P, double X)
 {
-	if (X < 0 || X > 1) return -1;
 	double R1, R2;
-    R1 = P2E_liq(P);
-    R2 = P2E_vap(P);
-    return R1 + (R2 - R1) * X;
+	if (X < 0 || X > 1) return -1;
+  R1 = P2E_liq(P);
+  R2 = P2E_vap(P);
+  return R1 + (R2 - R1) * X;
 }
 
 static double T2H_liq(double T)
@@ -933,20 +933,20 @@ static double P2H_vap(double P)
 
 static double TX2H(double T, double X)
 {
-	if (X < 0 || X > 1) return -1;
 	double R1, R2;
-    R1 = T2H_liq(T);
-    R2 = T2H_vap(T);
-    return R1 + (R2 - R1) * X;
+	if (X < 0 || X > 1) return -1;
+  R1 = T2H_liq(T);
+  R2 = T2H_vap(T);
+  return R1 + (R2 - R1) * X;
 }
 
 static double PX2H(double P, double X)
 {
-	if (X < 0 || X > 1) return -1;
 	double R1, R2;
-    R1 = P2H_liq(P);
-    R2 = P2H_vap(P);
-    return R1 + (R2 - R1) * X;
+	if (X < 0 || X > 1) return -1;
+  R1 = P2H_liq(P);
+  R2 = P2H_vap(P);
+  return R1 + (R2 - R1) * X;
 }
 
 static double T2S_liq(double T)
@@ -981,20 +981,20 @@ static double P2S_vap(double P)
 
 static double TX2S(double T, double X)
 {
-	if (X < 0 || X > 1) return -1;
 	double R1, R2;
-    R1 = T2S_liq(T);
-    R2 = T2S_vap(T);
-    return R1 + (R2 - R1) * X;
+	if (X < 0 || X > 1) return -1;
+  R1 = T2S_liq(T);
+  R2 = T2S_vap(T);
+  return R1 + (R2 - R1) * X;
 }
 
 static double PX2S(double P, double X)
 {
-	if (X < 0 || X > 1) return -1;
 	double R1, R2;
-    R1 = P2S_liq(P);
-    R2 = P2S_vap(P);
-    return R1 + (R2 - R1) * X;
+	if (X < 0 || X > 1) return -1;
+  R1 = P2S_liq(P);
+  R2 = P2S_vap(P);
+  return R1 + (R2 - R1) * X;
 }
 
 static double T2CP_liq(double T)
@@ -1029,20 +1029,20 @@ static double P2CP_vap(double P)
 
 static double TX2CP(double T, double X)
 {
-	if (X < 0 || X > 1) return -1;
 	double R1, R2;
-    R1 = T2CP_liq(T);
-    R2 = T2CP_vap(T);
-    return R1 + (R2 - R1) * X;
+	if (X < 0 || X > 1) return -1;
+  R1 = T2CP_liq(T);
+  R2 = T2CP_vap(T);
+  return R1 + (R2 - R1) * X;
 }
 
 static double PX2CP(double P, double X)
 {
-	if (X < 0 || X > 1) return -1;
 	double R1, R2;
-    R1 = P2CP_liq(P);
-    R2 = P2CP_vap(P);
-    return R1 + (R2 - R1) * X;
+	if (X < 0 || X > 1) return -1;
+  R1 = P2CP_liq(P);
+  R2 = P2CP_vap(P);
+  return R1 + (R2 - R1) * X;
 }
 
 static double T2CV_liq(double T)
@@ -1077,20 +1077,20 @@ static double P2CV_vap(double P)
 
 static double TX2CV(double T, double X)
 {
-	if (X < 0 || X > 1) return -1;
 	double R1, R2;
-    R1 = T2CV_liq(T);
-    R2 = T2CV_vap(T);
-    return R1 + (R2 - R1) * X;
+	if (X < 0 || X > 1) return -1;
+  R1 = T2CV_liq(T);
+  R2 = T2CV_vap(T);
+  return R1 + (R2 - R1) * X;
 }
 
 static double PX2CV(double P, double X)
 {
-	if (X < 0 || X > 1) return -1;
 	double R1, R2;
-    R1 = P2CV_liq(P);
-    R2 = P2CV_vap(P);
-    return R1 + (R2 - R1) * X;
+	if (X < 0 || X > 1) return -1;
+  R1 = P2CV_liq(P);
+  R2 = P2CV_vap(P);
+  return R1 + (R2 - R1) * X;
 }
 
 static double T2ETA_liq(double T)
@@ -1125,20 +1125,20 @@ static double P2ETA_vap(double P)
 
 static double TX2ETA(double T, double X)
 {
-	if (X < 0 || X > 1) return -1;
 	double R1, R2;
-    R1 = T2ETA_liq(T);
-    R2 = T2ETA_vap(T);
-    return R1 + (R2 - R1) * X;
+	if (X < 0 || X > 1) return -1;
+  R1 = T2ETA_liq(T);
+  R2 = T2ETA_vap(T);
+  return R1 + (R2 - R1) * X;
 }
 
 static double PX2ETA(double P, double X)
 {
-	if (X < 0 || X > 1) return -1;
 	double R1, R2;
-    R1 = P2ETA_liq(P);
-    R2 = P2ETA_vap(P);
-    return R1 + (R2 - R1) * X;
+	if (X < 0 || X > 1) return -1;
+  R1 = P2ETA_liq(P);
+  R2 = P2ETA_vap(P);
+  return R1 + (R2 - R1) * X;
 }
 
 static double T2RAMD_liq(double T)
@@ -1175,27 +1175,27 @@ static double P2RAMD_vap(double P)
 
 static double TX2RAMD(double T, double X)
 {
-	if (X < 0 || X > 1) return -1;
 	double R1, R2;
-    R1 = T2RAMD_liq(T);
-    R2 = T2RAMD_vap(T);
-    return R1 + (R2 - R1) * X;
+	if (X < 0 || X > 1) return -1;
+  R1 = T2RAMD_liq(T);
+  R2 = T2RAMD_vap(T);
+  return R1 + (R2 - R1) * X;
 }
 
 static double PX2RAMD(double P, double X)
 {
-	if (X < 0 || X > 1) return -1;
 	double R1, R2;
-    R1 = P2RAMD_liq(P);
-    R2 = P2RAMD_vap(P);
-    return R1 + (R2 - R1) * X;
+	if (X < 0 || X > 1) return -1;
+  R1 = P2RAMD_liq(P);
+  R2 = P2RAMD_vap(P);
+  return R1 + (R2 - R1) * X;
 }
 
 static int Region_PH(double P, double H)
 {
+	double Hliq, Hvap;
 	if (P < Pmin || P > Pmax) return -1;
 	else if (H > PT2H(P, Tmax) || H < PT2H(P, Tmin)) return -1;
-	double Hliq, Hvap;
 	Hliq = P2H_liq(P);
 	Hvap = P2H_vap(P);
 	if (P <= Pcrit)
@@ -1229,6 +1229,12 @@ static double PH2T(double P, double H)
 			{
 				eta = H / 2000;
 				for (i = 0; i <= 33; i++) PH2T = PH2T + nreg2aH[i] * pow(P, ireg2aH[i]) * pow((eta - 2.1), jreg2aH[i]);
+				return PH2T;
+			}
+			else if (P <= 6.5467)
+			{
+				eta = H / 2000;
+				for (i = 0; i <= 37; i++) PH2T = PH2T + nreg2bH[i] * pow((P - 2), ireg2bH[i]) * pow((eta - 2.6), jreg2bH[i]);
 				return PH2T;
 			}
 			else if (H >= reg2b2c[3] + pow(((P - reg2b2c[4]) / reg2b2c[2]), 0.5))
@@ -1268,9 +1274,9 @@ static double PH2T(double P, double H)
 
 static int Region_PS(double P, double S)
 {
+	double Sliq, Svap;
 	if (P < Pmin || P > Pmax) return -1;
 	else if (S > PT2S(P, Tmax) || S < PT2S(P, Tmin)) return -1;
-	double Sliq, Svap;
 	Sliq = P2S_liq(P);
 	Svap = P2S_vap(P);
 	if (P <= Pcrit)
@@ -1343,148 +1349,148 @@ static double PS2T(double P, double S)
 //    API Function    //
 ////////////////////////
 
-double YW(double Y)
+__declspec(dllexport) double __stdcall YW_97(double Y)
 {
 	if (P2T(Y) < 0) return -1;
 	else return P2T(Y) - Tmin;
 }
 
-double WY(double W)
+__declspec(dllexport) double __stdcall WY_97(double W)
 {
 	return T2P(W + Tmin);
 }
 
-double YWM(double Y, double W)
+__declspec(dllexport) double __stdcall YWM_97(double Y, double W)
 {
 	return PT2D(Y, W + Tmin);
 }
 
-double YWB(double Y, double W)
+__declspec(dllexport) double __stdcall YWB_97(double Y, double W)
 {
-	return 1 / YWM(Y, W);
+	return 1 / YWM_97(Y, W);
 }
 
-double YWN(double Y, double W)
+__declspec(dllexport) double __stdcall YWN_97(double Y, double W)
 {
 	return PT2E(Y, W + Tmin);
 }
 
-double YWH(double Y, double W)
+__declspec(dllexport) double __stdcall YWH_97(double Y, double W)
 {
 	return PT2H(Y, W + Tmin);
 }
 
-double YWS(double Y, double W)
+__declspec(dllexport) double __stdcall YWS_97(double Y, double W)
 {
 	return PT2S(Y, W + Tmin);
 }
 
-double YWDYB(double Y, double W)
+__declspec(dllexport) double __stdcall YWDYB_97(double Y, double W)
 {
 	return PT2CP(Y, W + Tmin);
 }
 
-double YWDRB(double Y, double W)
+__declspec(dllexport) double __stdcall YWDRB_97(double Y, double W)
 {
 	return PT2CV(Y, W + Tmin);
 }
 
-double YWDLN(double Y, double W)
+__declspec(dllexport) double __stdcall YWDLN_97(double Y, double W)
 {
 	return PT2ETA(Y, W + Tmin);
 }
 
-double YWYDN(double Y, double W)
+__declspec(dllexport) double __stdcall YWYDN_97(double Y, double W)
 {
-	if (YWB(Y, W) < 0) return -1;
-	else return PT2ETA(Y, W + Tmin) * YWB(Y, W);
+	if (YWB_97(Y, W) < 0) return -1;
+	else return PT2ETA(Y, W + Tmin) * YWB_97(Y, W);
 }
 
-double YWDR(double Y, double W)
+__declspec(dllexport) double __stdcall YWDR_97(double Y, double W)
 {
 	return PT2RAMD(Y, W + Tmin);
 }
 
-double YHW(double Y, double H)
+__declspec(dllexport) double __stdcall YHW_97(double Y, double H)
 {
 	if (PH2T(Y, H) < 0) return -1;
 	else return PH2T(Y, H) - Tmin;
 }
 
-double YSW(double Y, double S)
+__declspec(dllexport) double __stdcall YSW_97(double Y, double S)
 {
 	if (PS2T(Y, S) < 0) return -1;
 	else return PS2T(Y, S) - Tmin;
 }
 
-double YGM(double Y, double G)
+__declspec(dllexport) double __stdcall YGM_97(double Y, double G)
 {
-	return 1 / YGB(Y, G);
+	return 1 / YGB_97(Y, G);
 }
 
-double WGM(double W, double G)
+__declspec(dllexport) double __stdcall WGM_97(double W, double G)
 {
-	return 1 / WGB(W + Tmin, G);
+	return 1 / WGB_97(W + Tmin, G);
 }
 
-double YGB(double Y, double G)
+__declspec(dllexport) double __stdcall YGB_97(double Y, double G)
 {
 	return PX2V(Y, G);
 }
 
-double WGB(double W, double G)
+__declspec(dllexport) double __stdcall WGB_97(double W, double G)
 {
 	return TX2V(W + Tmin, G);
 }
 
-double YGN(double Y, double G)
+__declspec(dllexport) double __stdcall YGN_97(double Y, double G)
 {
 	return PX2E(Y, G);
 }
 
-double WGN(double W, double G)
+__declspec(dllexport) double __stdcall WGN_97(double W, double G)
 {
 	return TX2E(W + Tmin, G);
 }
 
-double YGH(double Y, double G)
+__declspec(dllexport) double __stdcall YGH_97(double Y, double G)
 {
 	return PX2H(Y, G);
 }
 
-double WGH(double W, double G)
+__declspec(dllexport) double __stdcall WGH_97(double W, double G)
 {
 	return TX2H(W + Tmin, G);
 }
 
-double YGS(double Y, double G)
+__declspec(dllexport) double __stdcall YGS_97(double Y, double G)
 {
 	return PX2S(Y, G);
 }
 
-double WGS(double W, double G)
+__declspec(dllexport) double __stdcall WGS_97(double W, double G)
 {
 	return TX2S(W + Tmin, G);
 }
 
-double YHG(double Y, double H)
+__declspec(dllexport) double __stdcall YHG_97(double Y, double H)
 {
 	double T = P2T(Y);
-	if (T < Tmin || T > Tcrit) return -1;
 	double H1, H2;
-    H1 = P2H_liq(Y);
-    H2 = P2H_vap(Y);
-    if ((H - H1) / (H2 - H1) >= -0.5) return (H - H1) / (H2 - H1);
-    else return -1;
+	if (T < Tmin || T > Tcrit) return -1;
+  H1 = P2H_liq(Y);
+  H2 = P2H_vap(Y);
+  if ((H - H1) / (H2 - H1) >= -0.5) return (H - H1) / (H2 - H1);
+  else return -1;
 }
 
-double YSG(double Y, double S)
+__declspec(dllexport) double __stdcall YSG_97(double Y, double S)
 {
 	double T = P2T(Y);
-	if (T < Tmin || T > Tcrit) return -1;
 	double S1, S2;
-    S1 = P2S_liq(Y);
-    S2 = P2S_vap(Y);
-    if ((S - S1) / (S2 - S1) >= -0.5) return (S - S1) / (S2 - S1);
-    else return -1;
+	if (T < Tmin || T > Tcrit) return -1;
+  S1 = P2S_liq(Y);
+  S2 = P2S_vap(Y);
+  if ((S - S1) / (S2 - S1) >= -0.5) return (S - S1) / (S2 - S1);
+  else return -1;
 }

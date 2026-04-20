@@ -1349,131 +1349,131 @@ static double PS2T(double P, double S)
 //    API Function    //
 ////////////////////////
 
-__declspec(dllexport) double __stdcall YW_97(double Y)
+double YW_97(double Y)
 {
 	if (P2T(Y) < 0) return -1;
 	else return P2T(Y) - Tmin;
 }
 
-__declspec(dllexport) double __stdcall WY_97(double W)
+double WY_97(double W)
 {
 	return T2P(W + Tmin);
 }
 
-__declspec(dllexport) double __stdcall YWM_97(double Y, double W)
+double YWM_97(double Y, double W)
 {
 	return PT2D(Y, W + Tmin);
 }
 
-__declspec(dllexport) double __stdcall YWB_97(double Y, double W)
+double YWB_97(double Y, double W)
 {
 	return 1 / YWM_97(Y, W);
 }
 
-__declspec(dllexport) double __stdcall YWN_97(double Y, double W)
+double YWN_97(double Y, double W)
 {
 	return PT2E(Y, W + Tmin);
 }
 
-__declspec(dllexport) double __stdcall YWH_97(double Y, double W)
+double YWH_97(double Y, double W)
 {
 	return PT2H(Y, W + Tmin);
 }
 
-__declspec(dllexport) double __stdcall YWS_97(double Y, double W)
+double YWS_97(double Y, double W)
 {
 	return PT2S(Y, W + Tmin);
 }
 
-__declspec(dllexport) double __stdcall YWDYB_97(double Y, double W)
+double YWDYB_97(double Y, double W)
 {
 	return PT2CP(Y, W + Tmin);
 }
 
-__declspec(dllexport) double __stdcall YWDRB_97(double Y, double W)
+double YWDRB_97(double Y, double W)
 {
 	return PT2CV(Y, W + Tmin);
 }
 
-__declspec(dllexport) double __stdcall YWDLN_97(double Y, double W)
+double YWDLN_97(double Y, double W)
 {
 	return PT2ETA(Y, W + Tmin);
 }
 
-__declspec(dllexport) double __stdcall YWYDN_97(double Y, double W)
+double YWYDN_97(double Y, double W)
 {
 	if (YWB_97(Y, W) < 0) return -1;
 	else return PT2ETA(Y, W + Tmin) * YWB_97(Y, W);
 }
 
-__declspec(dllexport) double __stdcall YWDR_97(double Y, double W)
+double YWDR_97(double Y, double W)
 {
 	return PT2RAMD(Y, W + Tmin);
 }
 
-__declspec(dllexport) double __stdcall YHW_97(double Y, double H)
+double YHW_97(double Y, double H)
 {
 	if (PH2T(Y, H) < 0) return -1;
 	else return PH2T(Y, H) - Tmin;
 }
 
-__declspec(dllexport) double __stdcall YSW_97(double Y, double S)
+double YSW_97(double Y, double S)
 {
 	if (PS2T(Y, S) < 0) return -1;
 	else return PS2T(Y, S) - Tmin;
 }
 
-__declspec(dllexport) double __stdcall YGM_97(double Y, double G)
+double YGM_97(double Y, double G)
 {
 	return 1 / YGB_97(Y, G);
 }
 
-__declspec(dllexport) double __stdcall WGM_97(double W, double G)
+double WGM_97(double W, double G)
 {
 	return 1 / WGB_97(W + Tmin, G);
 }
 
-__declspec(dllexport) double __stdcall YGB_97(double Y, double G)
+double YGB_97(double Y, double G)
 {
 	return PX2V(Y, G);
 }
 
-__declspec(dllexport) double __stdcall WGB_97(double W, double G)
+double WGB_97(double W, double G)
 {
 	return TX2V(W + Tmin, G);
 }
 
-__declspec(dllexport) double __stdcall YGN_97(double Y, double G)
+double YGN_97(double Y, double G)
 {
 	return PX2E(Y, G);
 }
 
-__declspec(dllexport) double __stdcall WGN_97(double W, double G)
+double WGN_97(double W, double G)
 {
 	return TX2E(W + Tmin, G);
 }
 
-__declspec(dllexport) double __stdcall YGH_97(double Y, double G)
+double YGH_97(double Y, double G)
 {
 	return PX2H(Y, G);
 }
 
-__declspec(dllexport) double __stdcall WGH_97(double W, double G)
+double WGH_97(double W, double G)
 {
 	return TX2H(W + Tmin, G);
 }
 
-__declspec(dllexport) double __stdcall YGS_97(double Y, double G)
+double YGS_97(double Y, double G)
 {
 	return PX2S(Y, G);
 }
 
-__declspec(dllexport) double __stdcall WGS_97(double W, double G)
+double WGS_97(double W, double G)
 {
 	return TX2S(W + Tmin, G);
 }
 
-__declspec(dllexport) double __stdcall YHG_97(double Y, double H)
+double YHG_97(double Y, double H)
 {
 	double T = P2T(Y);
 	double H1, H2;
@@ -1484,7 +1484,7 @@ __declspec(dllexport) double __stdcall YHG_97(double Y, double H)
   else return -1;
 }
 
-__declspec(dllexport) double __stdcall YSG_97(double Y, double S)
+double YSG_97(double Y, double S)
 {
 	double T = P2T(Y);
 	double S1, S2;

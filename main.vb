@@ -2970,6 +2970,7 @@ Private Function PH2T(P As Double, H As Double) As Double
             Next
             PH2T = Result
         Case 2
+            Call InitFieldsreg2b2c
             If P <= 4 Then
                 Call InitFieldsreg2aH
                 eta = H / 2000
@@ -2978,9 +2979,14 @@ Private Function PH2T(P As Double, H As Double) As Double
                 Next
                 PH2T = Result
                 Exit Function
-            End If
-            Call InitFieldsreg2b2c
-            If H >= reg2b2c(3) + ((P - reg2b2c(4)) / reg2b2c(2)) ^ 0.5 Then
+            ElseIf P <= 6.5467 Then
+                Call InitFieldsreg2bH
+                eta = H / 2000
+                For i = 0 To 37
+                    Result = Result + nreg2bH(i) * (P - 2) ^ ireg2bH(i) * (eta - 2.6) ^ jreg2bH(i)
+                Next
+                PH2T = Result
+            ElseIf H >= reg2b2c(3) + ((P - reg2b2c(4)) / reg2b2c(2)) ^ 0.5 Then
                 Call InitFieldsreg2bH
                 eta = H / 2000
                 For i = 0 To 37
